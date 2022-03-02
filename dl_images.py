@@ -5,6 +5,7 @@ import time
 from pathlib import Path
 
 from pixivpy3 import *
+from django.utils.text import slugify
 
 with open('config.json') as f:
     conf = json.load(f)
@@ -35,8 +36,9 @@ with open('list.csv') as f:
 
         print(id)
 
-        dir = 'data/img/' + str(metadata.illust.user.id) + \
-            '/' + str(metadata.illust.id) + '/'
+        dir = 'data/img/' + slugify(metadata.illust.user.name, allow_unicode=True) + '_' + str(metadata.illust.user.id) + \
+            '/' + slugify(metadata.illust.title, allow_unicode=True) + '_' + \
+            str(metadata.illust.id) + '/'
 
         Path(dir).mkdir(parents=True, exist_ok=True)
 

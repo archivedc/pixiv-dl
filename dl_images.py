@@ -6,6 +6,9 @@ from pathlib import Path
 
 from pixivpy3 import *
 
+with open('config.json') as f:
+    conf = json.load(f)
+
 api = AppPixivAPI()
 api.auth(refresh_token=conf['token'])
 

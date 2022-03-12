@@ -26,6 +26,7 @@ with open('list-novel.csv') as f:
         metadata = api.novel_detail(id)
 
         if 'error' in metadata:
+            time.sleep(5)
             continue
 
         print(id)

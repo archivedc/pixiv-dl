@@ -32,6 +32,7 @@ with open('list.csv') as f:
             metadata = api.illust_detail(id)
 
         if 'error' in metadata:
+            time.sleep(5)
             continue
 
         print(id)
